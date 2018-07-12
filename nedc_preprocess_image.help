@@ -1,0 +1,30 @@
+name: nedc_preprocess_image
+synopsis: nedc_preprocess_image [options] file(s)
+descr: preprocesses images and converts formats
+
+options:
+ -parameters: a parameter file containing preprocessing information
+ -odir: an output directory where files will be stored [default='.']
+ -rdir: a path that replaces the path of the .svs files [default='.']
+ -ofmt: select format output [default=numpy]
+ -help: display this help message
+
+arguments:
+ file(s): a file list of .svs (or other image formats) or single image files
+
+examples:
+ 
+ process all images contained in image.list and put them in $PWD/output.list:
+ nedc_preprocess_image -params params.txt -odir $PWD/output.out images.list
+
+ preprocess a single png image and write the output as a jpeg image
+ nedc_preprocess_image -ofmt .jpeg image.png
+
+ preprocess the images in images.list according to the default parameters
+ nedc_preprocess_image images.list
+
+ preprocess an arbitrary combination of images and file lists and write them
+ all as png images
+ nedc_preprocess_image -parameters params.txt -odir output img1.jpg \ 
+  files.list img2.png
+
